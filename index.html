@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>عيدية نظر عيني ✦ النسخة الأسطورية</title>
+<link href="https://fonts.googleapis.com/css2?family=Aref+Ruqaa:wght@400;700&family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent;user-select:none;-webkit-touch-callout:none;}
+
+:root{
+  --gold:#c9971a;--gold-l:#f5d060;--gold-xl:#fff8dc;--gold-d:#8a6010;
+  --deep:#05020e;--midnight:#0b0718;--plum:#1a0530;
+  --rose:#7a0a35;--crimson:#5a0010;
+}
+
+html,body{width:100%;height:100%;overflow:hidden;background:var(--deep);font-family:'Amiri',serif;color:#fff;}
+
+/* ══════════════════════════════════════
+   MASTER CANVAS BG
+══════════════════════════════════════ */
+#master-bg{position:fixed;inset:0;z-index:0;overflow:hidden;}
+
+/* Deep velvet sky */
+#sky-layer{
+  position:absolute;inset:0;
+  background:
+    radial-gradient(ellipse 140% 90% at 50% -5%, #1c0845 0%, #0d0525 25%, #06020f 55%, #000 100%);
+}
+
+/* Nebula */
+.neb{position:absolute;border-radius:50%;filter:blur(90px);mix-blend-mode:screen;will-change:transform;}
+.neb1{width:70vw;height:50vw;background:radial-gradient(circle,rgba(90,15,140,0.6),transparent 70%);top:-20%;left:-20%;animation:nd1 22s ease-in-out infinite;}
+.neb2{width:55vw;height:40vw;background:radial-gradient(circle,rgba(150,15,60,0.45),transparent 70%);top:0%;right:-15%;animation:nd2 18s ease-in-out infinite;}
+.neb3{width:45vw;height:35vw;background:radial-gradient(circle,rgba(20,5,80,0.55),transparent 70%);bottom:5%;left:10%;animation:nd3 25s ease-in-out infinite;}
+.neb4{width:35vw;height:28vw;background:radial-gradient(circle,rgba(160,80,5,0.2),transparent 70%);top:35%;left:38%;animation:nd4 16s ease-in-out infinite;}
+@keyframes nd1{0%,100%{transform:translate(0,0)scale(1)}40%{transform:translate(4vw,-3vh)scale(1.1)}70%{transform:translate(-2vw,4vh)scale(0.95)}}
+@keyframes nd2{0%,100%{transform:translate(0,0)scale(1)}35%{transform:translate(-3vw,2vh)scale(1.07)}75%{transform:translate(2vw,-3vh)scale(0.93)}}
+@keyframes nd3{0%,100%{transform:translate(0,0)scale(1)}45%{transform:translate(3vw,2vh)scale(1.06)}80%{transform:translate(-2vw,-2vh)scale(0.96)}}
+@keyframes nd4{0%,100%{transform:translate(0,0)scale(1.1)}50%{transform:translate(1vw,2vh)scale(0.9)}}
+
+/* Horizon glow */
+#horizon{
+  position:absolute;bottom:0;left:0;right:0;height:35%;
+  background:linear-gradient(0deg,rgba(100,20,40,0.35) 0%,rgba(60,5,30,0.2) 40%,transparent 100%);
+  pointer-events:none;
+}
+
+/* ══════════════════════════════════════
+   MOSQUE SILHOUETTE — Pure CSS SVG
+══════════════════════════════════════ */
+#mosque-wrap{
+  position:fixed;bottom:0;left:0;right:0;
+  z-index:1;pointer-events:none;
+  display:flex;justify-content:center;align-items:flex-end;
+  opacity:0;
+}
+#mosque-svg{
+  width:min(900px,100vw);
+  height:auto;
+  filter:drop-shadow(0 -8px 40px rgba(201,151,26,0.25)) drop-shadow(0 0 80px rgba(100,10,50,0.4));
+}
+
+/* ══════════════════════════════════════
+   SHOOTING STARS
+══════════════════════════════════════ */
+#shooting-wrap{position:fixed;inset:0;z-index:2;pointer-events:none;overflow:hidden;}
+.shoot{
+  position:absolute;height:1.5px;
+  background:linear-gradient(90deg,rgba(255,255,255,0.9),rgba(255,248,200,0.6),transparent);
+  border-radius:2px;
+  animation:shootAnim linear forwards;
+  opacity:0;
+}
+@keyframes shootAnim{
+  0%{opacity:0;transform:translateX(0) translateY(0);}
+  5%{opacity:1;}
+  90%{opacity:0.6;}
+  100%{opacity:0;transform:translateX(-80vw) translateY(30vh);}
+}
+
+/* ══════════════════════════════════════
+   STARS & MOON
+══════════════════════════════════════ */
+#stars-canvas{position:fixed;inset:0;z-index:1;pointer-events:none;}
+
+#big-moon{
+  position:fixed;
+  top:clamp(12px,3vh,40px);
+  left:50%;
+  transform:translateX(-50%);
+  z-index:3;pointer-events:none;
+  opacity:0;
+  will-change:transform;
+}
+.moon-disc{
+  width:clamp(44px,9vw,80px);
+  height:clamp(44px,9vw,80px);
+  border-radius:50%;
+  background:radial-gradient(circle at 38% 35%,#fffbe6 0%,#f5d060 30%,#c9971a 65%,#8a6010 100%);
+  box-shadow:
+    0 0 0 2px rgba(201,151,26,0.3),
+    0 0 30px 10px rgba(201,151,26,0.5),
+    0 0 80px 30px rgba(201,151,26,0.25),
+    0 0 160px 60px rgba(201,151,26,0.1);
+  animation:moonPulse 5s ease-in-out infinite;
+  position:relative;
+  overflow:hidden;
+}
+/* Moon craters */
+.moon-disc::before{
+  content:'';position:absolute;
+  width:18%;height:18%;border-radius:50%;
+  background:rgba(140,90,0,0.25);
+  top:25%;left:30%;
+  box-shadow:30px 15px 0 rgba(140,90,0,0.15),50px 35px 0 8px rgba(140,90,0,0.12),-10px 40px 0 5px rgba(140,90,0,0.18);
+}
+/* Moon glow ring */
+.moon-ring{
+  position:absolute;inset:-8px;border-radius:50%;
+  border:1px solid rgba(201,151,26,0.2);
+  animation:ringPulse 4s ease-in-out infinite;
+}
+.moon-ring2{
+  position:absolute;inset:-18px;border-radius:50%;
+  border:1px solid rgba(201,151,26,0.1);
+  animation:ringPulse 4s ease-in-out infinite 0.8s;
+}
+.moon-ring3{
+  position:absolute;inset:-32px;border-radius:50%;
+  border:1px solid rgba(201,151,26,0.06);
+  animation:ringPulse 4s ease-in-out infinite 1.6s;
+}
+@keyframes moonPulse{0%,100%{box-shadow:0 0 30px 10px rgba(201,151,26,0.5),0 0 80px 30px rgba(201,151,26,0.25),0 0 160px 60px rgba(201,151,26,0.1);}50%{box-shadow:0 0 50px 18px rgba(201,151,26,0.7),0 0 110px 50px rgba(201,151,26,0.35),0 0 200px 80px rgba(201,151,26,0.15);}}
+@keyframes ringPulse{0%,100%{opacity:0.4;transform:scale(1);}50%{opacity:1;transform:scale(1.04);}}
+
+/* Moon crescent style overlay */
+.moon-shadow{
+  position:absolute;
+  width:85%;height:85%;border-radius:50%;
+  background:radial-gradient(circle at 70% 50%,transparent 55%,rgba(5,2,14,0.15) 100%);
+  top:8%;left:8%;
+}
+
+/* ══════════════════════════════════════
+   PARTICLES CANVAS
+══════════════════════════════════════ */
+#p-canvas{position:fixed;inset:0;z-index:55;pointer-events:none;}
+
+/* ══════════════════════════════════════
+   FLOATING LANTERNS
+══════════════════════════════════════ */
+#lanterns{position:fixed;inset:0;z-index:4;pointer-events:none;overflow:hidden;}
+.lantern{
+  position:absolute;
+  animation:lanternFloat linear infinite;
+  will-change:transform;
+  filter:drop-shadow(0 0 6px rgba(255,180,0,0.6));
+}
+@keyframes lanternFloat{
+  0%{transform:translateY(105vh) translateX(0) rotate(-6deg);opacity:0;}
+  6%{opacity:1;}
+  50%{transform:translateY(50vh) translateX(15px) rotate(6deg);}
+  94%{opacity:0.8;}
+  100%{transform:translateY(-10vh) translateX(-10px) rotate(-6deg);opacity:0;}
+}
+
+/* ══════════════════════════════════════
+   GOLD DUST LAYER
+══════════════════════════════════════ */
+#dust-canvas{position:fixed;inset:0;z-index:3;pointer-events:none;opacity:0.5;}
+
+/* ══════════════════════════════════════
+   EPIC INTRO SCREEN
+══════════════════════════════════════ */
+#intro{
+  position:fixed;inset:0;z-index:900;
+  background:#000;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:clamp(10px,2.5vh,20px);
+}
+
+/* Intro: rotating mandala */
+#mandala-wrap{
+  position:relative;
+  width:clamp(100px,22vw,160px);
+  height:clamp(100px,22vw,160px);
+  display:flex;align-items:center;justify-content:center;
+}
+.mandala-ring{
+  position:absolute;inset:0;border-radius:50%;
+  border-style:solid;border-color:transparent;
+}
+.mr1{border-width:1.5px;border-top-color:rgba(201,151,26,0.9);border-right-color:rgba(201,151,26,0.4);animation:mSpin 2s linear infinite;}
+.mr2{inset:8px;border-width:1px;border-bottom-color:rgba(201,151,26,0.7);border-left-color:rgba(201,151,26,0.3);animation:mSpin 3s linear infinite reverse;}
+.mr3{inset:16px;border-width:1px;border-top-color:rgba(245,208,96,0.6);border-right-color:rgba(245,208,96,0.2);animation:mSpin 4s linear infinite;}
+.mr4{inset:24px;border-width:0.5px;border-bottom-color:rgba(201,151,26,0.4);animation:mSpin 5s linear infinite reverse;}
+@keyframes mSpin{to{transform:rotate(360deg);}}
+
+/* Corner diamonds on mandala */
+.mr1::before,.mr1::after{
+  content:'◆';position:absolute;color:rgba(201,151,26,0.8);
+  font-size:5px;line-height:1;
+}
+.mr1::before{top:-3px;left:50%;transform:translateX(-50%);}
+.mr1::after{bottom:-3px;left:50%;transform:translateX(-50%);}
+
+#intro-moon-big{
+  font-size:clamp(2rem,8vw,3.5rem);
+  animation:introPulse 2.5s ease-in-out infinite;
+  text-shadow:0 0 30px rgba(201,151,26,0.9),0 0 60px rgba(201,151,26,0.5);
+  position:relative;z-index:2;
+}
+@keyframes introPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+
+#intro-title{
+  font-family:'Aref Ruqaa',serif;
+  font-size:clamp(1.3rem,4.5vw,2.2rem);
+  background:linear-gradient(135deg,#f7dc6f,#c9971a,#f7dc6f);
+  background-size:200% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:goldFlow 3s linear infinite;
+  letter-spacing:4px;
+  text-align:center;
+  opacity:0;
+}
+@keyframes goldFlow{to{background-position:200% center;}}
+
+#intro-lines{
+  font-family:monospace;
+  font-size:clamp(0.65rem,1.7vw,0.88rem);
+  color:#00e87a;
+  text-shadow:0 0 8px #00e87a;
+  text-align:left;direction:ltr;
+  width:min(440px,86vw);
+  line-height:2.1;
+}
+#intro-lines span{display:block;opacity:0;transform:translateX(-10px);}
+
+/* Ornate progress bar */
+#prog-wrap{
+  width:min(340px,82vw);
+  position:relative;
+  margin-top:4px;
+}
+#prog-label{
+  font-family:monospace;font-size:0.6rem;
+  color:rgba(201,151,26,0.5);
+  text-align:center;margin-bottom:5px;
+  letter-spacing:2px;
+}
+#prog-track{
+  height:3px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden;
+  box-shadow:0 0 8px rgba(201,151,26,0.1);
+}
+#prog-fill{
+  height:100%;width:0%;border-radius:3px;
+  background:linear-gradient(90deg,var(--gold-d),var(--gold-l),var(--gold-d));
+  background-size:200% auto;
+  box-shadow:0 0 12px var(--gold);
+  animation:goldFlow 1.5s linear infinite;
+  transition:width 0.08s linear;
+}
+.prog-dot{
+  position:absolute;top:50%;transform:translateY(-50%);
+  width:7px;height:7px;border-radius:50%;
+  background:var(--gold-l);
+  box-shadow:0 0 10px var(--gold-l);
+  transition:left 0.08s linear;
+}
+
+.intro-cursor{
+  display:inline-block;width:7px;height:0.9em;
+  background:#00e87a;vertical-align:text-bottom;
+  animation:blink 0.6s step-end infinite;
+}
+@keyframes blink{50%{opacity:0;}}
+
+/* ══════════════════════════════════════
+   MAIN SCENE
+══════════════════════════════════════ */
+#main{
+  display:none;position:fixed;inset:0;z-index:10;
+  align-items:center;justify-content:center;
+  padding:clamp(8px,2vw,20px);
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+}
+
+/* ══════════════════════════════════════
+   ORNATE FRAME (outside card)
+══════════════════════════════════════ */
+#outer-frame{
+  position:relative;
+  width:100%;max-width:600px;
+  padding:clamp(10px,2vw,18px);
+  flex-shrink:0;
+  margin:auto;
+}
+/* Corner ornaments */
+.corner{
+  position:absolute;
+  width:clamp(28px,5vw,44px);
+  height:clamp(28px,5vw,44px);
+  z-index:15;
+  opacity:0;
+}
+.corner svg{width:100%;height:100%;}
+.c-tl{top:2px;right:2px;}
+.c-tr{top:2px;left:2px;transform:scaleX(-1);}
+.c-bl{bottom:2px;right:2px;transform:scaleY(-1);}
+.c-br{bottom:2px;left:2px;transform:scale(-1,-1);}
+
+/* ══════════════════════════════════════
+   GLASS CARD — THE LEGENDARY ONE
+══════════════════════════════════════ */
+#card{
+  position:relative;
+  width:100%;
+  background:
+    linear-gradient(145deg,rgba(255,255,255,0.07) 0%,rgba(255,255,255,0.02) 40%,rgba(255,255,255,0.06) 100%);
+  backdrop-filter:blur(30px) saturate(200%) brightness(1.05);
+  -webkit-backdrop-filter:blur(30px) saturate(200%) brightness(1.05);
+  border-radius:44px;
+  border:1px solid rgba(201,151,26,0.28);
+  padding:clamp(14px,3.5vw,40px) clamp(14px,3.5vw,36px) clamp(14px,3vw,30px);
+  text-align:center;
+  box-shadow:
+    0 0 0 1px rgba(201,151,26,0.07),
+    0 0 0 2px rgba(201,151,26,0.03),
+    0 40px 100px rgba(0,0,0,0.75),
+    0 -2px 40px rgba(201,151,26,0.08),
+    0 0 100px rgba(100,10,50,0.15),
+    inset 0 2px 0 rgba(255,255,255,0.13),
+    inset 0 -1px 0 rgba(0,0,0,0.3),
+    inset 1px 0 0 rgba(255,255,255,0.06),
+    inset -1px 0 0 rgba(255,255,255,0.06);
+  will-change:transform;
+  transform-style:preserve-3d;
+  overflow:hidden;
+  opacity:0;
+}
+
+/* THE LEGENDARY ROTATING CONIC BORDER */
+#card-border{
+  position:absolute;inset:-1.5px;
+  border-radius:46px;
+  z-index:-1;
+  background:conic-gradient(
+    from var(--a,0deg),
+    transparent 0deg,
+    rgba(201,151,26,0.0) 20deg,
+    rgba(245,208,96,0.9) 60deg,
+    rgba(255,248,220,1) 80deg,
+    rgba(245,208,96,0.9) 100deg,
+    rgba(201,151,26,0.3) 130deg,
+    transparent 170deg,
+    transparent 210deg,
+    rgba(180,20,80,0.5) 240deg,
+    rgba(220,60,120,0.7) 255deg,
+    rgba(180,20,80,0.5) 270deg,
+    transparent 310deg,
+    transparent 360deg
+  );
+  animation:borderSpin 7s linear infinite;
+  -webkit-mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  -webkit-mask-composite:destination-out;
+  mask:linear-gradient(#fff 0 0) content-box,linear-gradient(#fff 0 0);
+  mask-composite:exclude;
+  padding:1.5px;
+}
+@property --a{syntax:'<angle>';initial-value:0deg;inherits:false;}
+@keyframes borderSpin{to{--a:360deg;}}
+
+/* Static glow behind border */
+#card-glow{
+  position:absolute;inset:-3px;
+  border-radius:48px;
+  z-index:-2;
+  background:conic-gradient(
+    from var(--a2,0deg),
+    transparent 0deg,
+    rgba(245,208,96,0.3) 80deg,
+    transparent 160deg,
+    rgba(180,20,80,0.2) 240deg,
+    transparent 320deg,
+    transparent 360deg
+  );
+  filter:blur(8px);
+  animation:borderSpin2 7s linear infinite;
+  opacity:0.8;
+}
+@property --a2{syntax:'<angle>';initial-value:0deg;inherits:false;}
+@keyframes borderSpin2{to{--a2:360deg;}}
+
+/* Dynamic shine that follows finger */
+#card-shine{
+  position:absolute;inset:0;border-radius:44px;
+  pointer-events:none;z-index:20;
+  background:radial-gradient(circle at 50% 30%,rgba(255,255,255,0.08) 0%,transparent 55%);
+  transition:background 0.2s ease;
+}
+
+/* ══════════════════════════════════════
+   BISMILLAH HEADER (NEW ✦)
+══════════════════════════════════════ */
+#bismillah{
+  font-family:'Aref Ruqaa',serif;
+  font-size:clamp(0.72rem,2vw,0.95rem);
+  color:rgba(201,151,26,0.55);
+  letter-spacing:2px;
+  margin-bottom:clamp(4px,1vw,8px);
+  opacity:0;
+  display:flex;align-items:center;justify-content:center;gap:10px;
+}
+.bism-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,151,26,0.3),transparent);max-width:60px;}
+
+/* ══════════════════════════════════════
+   CARD HEADER
+══════════════════════════════════════ */
+.card-crown{
+  display:flex;align-items:center;justify-content:center;
+  gap:clamp(5px,1.5vw,12px);
+  margin-bottom:clamp(2px,0.6vw,5px);
+}
+.crown-star{
+  font-size:clamp(0.6rem,1.6vw,0.85rem);
+  color:var(--gold-l);
+  opacity:0.6;
+  animation:starTwinkle 3s ease-in-out infinite;
+}
+.crown-star:nth-child(2){animation-delay:-1s;}
+.crown-star:nth-child(4){animation-delay:-2s;}
+@keyframes starTwinkle{0%,100%{opacity:0.4;transform:scale(0.8);}50%{opacity:1;transform:scale(1.2);}}
+
+.main-moon{
+  font-size:clamp(1.6rem,5vw,2.8rem);
+  animation:mainMoonFloat 4.5s ease-in-out infinite;
+  filter:drop-shadow(0 0 20px rgba(201,151,26,0.9)) drop-shadow(0 0 40px rgba(201,151,26,0.5));
+  position:relative;z-index:2;
+}
+@keyframes mainMoonFloat{
+  0%,100%{transform:translateY(0) rotate(-3deg);filter:drop-shadow(0 0 18px rgba(201,151,26,0.8)) drop-shadow(0 0 40px rgba(201,151,26,0.4));}
+  50%{transform:translateY(-10px) rotate(3deg);filter:drop-shadow(0 0 32px rgba(201,151,26,1)) drop-shadow(0 0 65px rgba(201,151,26,0.6));}
+}
+
+.card-title{
+  font-family:'Aref Ruqaa',serif;
+  font-size:clamp(1.5rem,5vw,2.6rem);
+  font-weight:700;
+  background:linear-gradient(135deg,#f7dc6f 0%,#c9971a 35%,#fff8dc 55%,#c9971a 75%,#f7dc6f 100%);
+  background-size:250% auto;
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  animation:goldFlow 4s linear infinite;
+  line-height:1.2;
+  margin-bottom:clamp(2px,0.5vw,5px);
+  filter:drop-shadow(0 2px 15px rgba(201,151,26,0.5));
+}
+
+/* Eid badge pill */
+.eid-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:linear-gradient(135deg,rgba(201,151,26,0.12),rgba(201,151,26,0.06));
+  border:1px solid rgba(201,151,26,0.22);
+  border-radius:24px;
+  padding:4px 14px;
+  margin-bottom:clamp(8px,1.8vw,14px);
+}
+.badge-gem{
+  width:5px;height:5px;background:var(--gold-l);
+  border-radius:50%;box-shadow:0 0 8px var(--gold-l);
+  animation:gemPulse 2.2s ease-in-out infinite;
+}
+.badge-gem:last-child{animation-delay:-1.1s;}
+@keyframes gemPulse{0%,100%{opacity:0.3;transform:scale(0.6);}50%{opacity:1;transform:scale(1.2);}}
+.badge-text{
+  font-family:monospace;font-size:clamp(0.58rem,1.6vw,0.72rem);
+  color:rgba(201,151,26,0.65);letter-spacing:2.5px;
+}
+
+/* Divider — ornate */
+.ornate-div{
+  display:flex;align-items:center;gap:8px;
+  margin:0 auto clamp(8px,1.8vw,14px);
+  width:85%;
+}
+.od-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,151,26,0.5),transparent);}
+.od-motif{color:var(--gold);font-size:0.65rem;opacity:0.6;letter-spacing:2px;}
+
+/* ══════════════════════════════════════
+   MESSAGE
+══════════════════════════════════════ */
+#msg-box{
+  font-family:'Amiri',serif;
+  font-size:clamp(0.92rem,2.4vw,1.15rem);
+  line-height:2;
+  color:rgba(255,255,255,0.92);
+  text-align:center;direction:rtl;
+  position:relative;
+  text-shadow:0 1px 8px rgba(0,0,0,0.5);
+  word-break:keep-all;
+  overflow-wrap:break-word;
+}
+#msg-txt{transition:none;}
+#msg-cur{
+  display:inline-block;width:2px;height:1em;
+  background:var(--gold-l);vertical-align:middle;margin-right:1px;
+  animation:blink 0.6s step-end infinite;opacity:0;
+  box-shadow:0 0 5px var(--gold-l);
+}
+
+/* ══════════════════════════════════════
+   STAMP / SEAL — ANIMATED (NEW ✦✦)
+══════════════════════════════════════ */
+#seal-wrap{
+  display:flex;justify-content:center;
+  margin:clamp(5px,1.2vw,10px) 0;
+  opacity:0;transform:scale(0.3) rotate(-25deg);
+  transition:all 0.9s cubic-bezier(0.34,1.56,0.64,1);
+}
+#seal-wrap.pop{opacity:1;transform:scale(1) rotate(0deg);}
+
+.seal{
+  width:clamp(52px,10vw,72px);height:clamp(52px,10vw,72px);
+  border-radius:50%;
+  background:radial-gradient(circle,rgba(201,151,26,0.1),rgba(100,10,50,0.05),transparent);
+  border:1.5px solid rgba(201,151,26,0.45);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  position:relative;
+  box-shadow:0 0 25px rgba(201,151,26,0.2),inset 0 0 20px rgba(201,151,26,0.05);
+}
+.seal::before{
+  content:'';position:absolute;inset:6px;
+  border-radius:50%;border:1px dashed rgba(201,151,26,0.22);
+}
+.seal::after{
+  content:'';position:absolute;inset:-6px;
+  border-radius:50%;
+  border:1px solid transparent;
+  border-top-color:rgba(201,151,26,0.5);
+  animation:mSpin 8s linear infinite;
+}
+.seal-top{font-family:'Aref Ruqaa',serif;font-size:clamp(0.35rem,1vw,0.48rem);color:rgba(201,151,26,0.7);letter-spacing:2px;}
+.seal-icon{font-size:clamp(1rem,2.5vw,1.4rem);line-height:1;}
+.seal-bot{font-family:'Aref Ruqaa',serif;font-size:clamp(0.38rem,0.9vw,0.5rem);color:rgba(201,151,26,0.65);letter-spacing:1px;}
+
+/* ══════════════════════════════════════
+   PLAY BUTTON — LEGENDARY
+══════════════════════════════════════ */
+.btn-wrap{
+  position:relative;display:inline-block;
+  margin-top:clamp(2px,0.8vw,6px);
+}
+
+/* Outer aura rings */
+.btn-aura{
+  position:absolute;inset:-16px;
+  border-radius:60px;
+  pointer-events:none;
+  opacity:0;
+  transition:opacity 0.5s ease;
+}
+.btn-aura.active{opacity:1;}
+.btn-aura::before{
+  content:'';position:absolute;inset:0;border-radius:60px;
+  border:1.5px solid rgba(201,151,26,0.4);
+  animation:auraPulse 2s ease-in-out infinite;
+}
+.btn-aura::after{
+  content:'';position:absolute;inset:-8px;border-radius:68px;
+  border:1px solid rgba(201,151,26,0.2);
+  animation:auraPulse 2s ease-in-out infinite 0.5s;
+}
+@keyframes auraPulse{0%,100%{opacity:0.3;transform:scale(0.97);}50%{opacity:1;transform:scale(1.03);}}
+
+#play-btn{
+  position:relative;
+  background:linear-gradient(135deg,#b8860b 0%,#d4af37 30%,#f7dc6f 55%,#d4af37 80%,#b8860b 100%);
+  background-size:250% auto;
+  color:#1a0800;
+  font-family:'Aref Ruqaa',serif;
+  font-size:clamp(0.92rem,2.6vw,1.15rem);
+  font-weight:700;border:none;
+  padding:clamp(12px,2.8vw,17px) clamp(26px,6vw,48px);
+  border-radius:50px;cursor:pointer;
+  letter-spacing:1px;overflow:hidden;
+  box-shadow:
+    0 6px 30px rgba(201,151,26,0.55),
+    0 2px 8px rgba(0,0,0,0.5),
+    0 -1px 0 rgba(255,255,255,0.15),
+    inset 0 2px 0 rgba(255,255,255,0.5),
+    inset 0 -2px 0 rgba(0,0,0,0.2);
+  transition:background-position 0.5s ease,box-shadow 0.3s,transform 0.12s;
+  -webkit-user-select:none;
+}
+#play-btn:hover{
+  background-position:right center;
+  box-shadow:0 12px 50px rgba(201,151,26,0.75),0 4px 12px rgba(0,0,0,0.5),inset 0 2px 0 rgba(255,255,255,0.5);
+}
+#play-btn:active{transform:scale(0.93);}
+
+/* Sweeping shimmer */
+#play-btn::before{
+  content:'';position:absolute;
+  top:-50%;left:-80%;width:40%;height:200%;
+  background:linear-gradient(100deg,transparent,rgba(255,255,255,0.4),transparent);
+  transform:skewX(-20deg);
+  animation:btnShimmer 4s ease-in-out infinite;
+}
+@keyframes btnShimmer{0%{left:-80%;}55%,100%{left:140%;}}
+
+.btn-inner{display:flex;align-items:center;gap:10px;justify-content:center;position:relative;z-index:1;}
+.btn-ico{transition:transform 0.4s ease;font-size:1.2em;}
+#play-btn:hover .btn-ico{transform:scale(1.3) rotate(12deg);}
+#vinyl-ico{display:none;animation:vinylSpin 1.2s linear infinite;font-size:1.25em;}
+@keyframes vinylSpin{to{transform:rotate(360deg);}}
+
+/* ══════════════════════════════════════
+   WAVEFORM — CINEMATIC
+══════════════════════════════════════ */
+#waveform{
+  display:flex;align-items:center;justify-content:center;
+  gap:3px;height:32px;margin-top:clamp(5px,1.2vw,10px);
+  opacity:0;pointer-events:none;
+}
+.wbar{
+  width:3px;border-radius:3px;
+  background:linear-gradient(180deg,var(--gold-l) 0%,rgba(201,151,26,0.2) 100%);
+  height:5px;transform-origin:bottom;
+}
+.wbar.play{animation:waveAnim 0.65s ease-in-out infinite alternate;}
+@keyframes waveAnim{to{transform:scaleY(6);}}
+
+/* ══════════════════════════════════════
+   FOOTER VERSE (NEW ✦✦✦)
+══════════════════════════════════════ */
+#footer-verse{
+  position:fixed;
+  bottom:clamp(8px,2vh,20px);
+  left:50%;transform:translateX(-50%);
+  z-index:20;width:90%;max-width:500px;
+  text-align:center;
+  opacity:0;pointer-events:none;
+  transition:opacity 1s ease;
+}
+#footer-verse.show{opacity:1;}
+.verse-text{
+  font-family:'Amiri',serif;font-style:italic;
+  font-size:clamp(0.65rem,1.8vw,0.8rem);
+  color:rgba(201,151,26,0.4);
+  letter-spacing:1px;
+  line-height:1.8;
+  text-shadow:0 1px 4px rgba(0,0,0,0.8);
+}
+.verse-sig{
+  font-family:monospace;font-size:clamp(0.52rem,1.3vw,0.62rem);
+  color:rgba(255,255,255,0.15);letter-spacing:3px;margin-top:3px;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE — COMPREHENSIVE FIX
+══════════════════════════════════════ */
+
+/* iPad Portrait / small tablets */
+@media(max-height:900px){
+  #card{padding:clamp(12px,2.8vw,28px) clamp(12px,2.8vw,28px) clamp(10px,2vw,22px);}
+  .main-moon{font-size:1.6rem;}
+  .card-title{font-size:1.55rem;}
+  #msg-box{font-size:0.95rem;line-height:1.9;}
+  .eid-badge{padding:3px 12px;margin-bottom:8px;}
+  .ornate-div{margin-bottom:8px;}
+  #seal-wrap{margin:4px 0;}
+  .seal{width:55px;height:55px;}
+  #bismillah{font-size:0.7rem;margin-bottom:6px;}
+}
+
+/* Phones and very short screens */
+@media(max-height:700px){
+  #bismillah{display:none;}
+  .main-moon{font-size:1.4rem;}
+  .card-title{font-size:1.3rem;}
+  #msg-box{font-size:0.88rem;line-height:1.8;}
+  #card{padding:10px 12px 10px;}
+  .eid-badge{margin-bottom:6px;padding:3px 10px;}
+  .ornate-div{margin-bottom:6px;}
+  #seal-wrap{margin:3px 0;}
+  .seal{width:48px;height:48px;}
+  #big-moon .moon-disc{width:36px;height:36px;}
+  .wbar{height:4px;}
+  #waveform{height:24px;margin-top:6px;}
+}
+
+@media(max-height:560px){
+  #bismillah,#seal-wrap,#footer-verse{display:none !important;}
+  .card-crown{margin-bottom:1px;}
+  .ornate-div{margin-bottom:4px;}
+  #msg-box{font-size:0.82rem;line-height:1.75;}
+  .eid-badge{display:none;}
+}
+
+/* Very wide landscape phones */
+@media(max-height:440px){
+  #seal-wrap,#footer-verse,.ornate-div+.ornate-div{display:none !important;}
+  #card{padding:8px 12px;}
+  #msg-box{font-size:0.78rem;line-height:1.65;}
+}
+</style>
+</head>
+<body>
+
+<!-- SCENE -->
+<div id="master-bg">
+  <div id="sky-layer"></div>
+  <div class="neb neb1"></div>
+  <div class="neb neb2"></div>
+  <div class="neb neb3"></div>
+  <div class="neb neb4"></div>
+  <div id="horizon"></div>
+</div>
+
+<!-- Canvases -->
+<canvas id="stars-canvas"></canvas>
+<canvas id="dust-canvas"></canvas>
+<canvas id="p-canvas"></canvas>
+
+<!-- Big Moon -->
+<div id="big-moon">
+  <div class="moon-disc">
+    <div class="moon-shadow"></div>
+  </div>
+  <div class="moon-ring"></div>
+  <div class="moon-ring2"></div>
+  <div class="moon-ring3"></div>
+</div>
+
+<!-- Mosque SVG -->
+<div id="mosque-wrap">
+  <svg id="mosque-svg" viewBox="0 0 900 220" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <linearGradient id="mq" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#c9971a" stop-opacity="0.55"/>
+        <stop offset="60%" stop-color="#8a6010" stop-opacity="0.35"/>
+        <stop offset="100%" stop-color="#2a1004" stop-opacity="0.8"/>
+      </linearGradient>
+      <filter id="mblur"><feGaussianBlur stdDeviation="0.5"/></filter>
+    </defs>
+    <!-- Ground -->
+    <rect x="0" y="210" width="900" height="10" fill="url(#mq)" opacity="0.6"/>
+    <!-- Main dome center -->
+    <ellipse cx="450" cy="120" rx="60" ry="55" fill="url(#mq)" filter="url(#mblur)"/>
+    <rect x="390" y="120" width="120" height="90" fill="url(#mq)"/>
+    <!-- Center minaret -->
+    <rect x="442" y="30" width="16" height="100" fill="url(#mq)"/>
+    <polygon points="442,30 450,8 458,30" fill="url(#mq)"/>
+    <ellipse cx="450" cy="30" rx="8" ry="4" fill="url(#mq)" opacity="0.7"/>
+    <!-- Side domes L -->
+    <ellipse cx="340" cy="148" rx="42" ry="38" fill="url(#mq)"/>
+    <rect x="298" y="148" width="84" height="62" fill="url(#mq)"/>
+    <!-- Side domes R -->
+    <ellipse cx="560" cy="148" rx="42" ry="38" fill="url(#mq)"/>
+    <rect x="518" y="148" width="84" height="62" fill="url(#mq)"/>
+    <!-- Minarets L -->
+    <rect x="270" y="70" width="12" height="120" fill="url(#mq)"/>
+    <polygon points="270,70 276,52 282,70" fill="url(#mq)"/>
+    <rect x="230" y="88" width="10" height="122" fill="url(#mq)"/>
+    <polygon points="230,88 235,72 240,88" fill="url(#mq)"/>
+    <!-- Minarets R -->
+    <rect x="618" y="70" width="12" height="120" fill="url(#mq)"/>
+    <polygon points="618,70 624,52 630,70" fill="url(#mq)"/>
+    <rect x="660" y="88" width="10" height="122" fill="url(#mq)"/>
+    <polygon points="660,88 665,72 670,88" fill="url(#mq)"/>
+    <!-- Side buildings -->
+    <rect x="140" y="160" width="80" height="50" fill="url(#mq)"/>
+    <rect x="160" y="148" width="40" height="62" fill="url(#mq)"/>
+    <rect x="680" y="160" width="80" height="50" fill="url(#mq)"/>
+    <rect x="700" y="148" width="40" height="62" fill="url(#mq)"/>
+    <!-- Far buildings -->
+    <rect x="60" y="175" width="60" height="35" fill="url(#mq)" opacity="0.6"/>
+    <rect x="780" y="175" width="60" height="35" fill="url(#mq)" opacity="0.6"/>
+    <!-- Arched windows -->
+    <ellipse cx="450" cy="160" rx="14" ry="18" fill="rgba(0,0,0,0.4)"/>
+    <ellipse cx="340" cy="175" rx="10" ry="13" fill="rgba(0,0,0,0.35)"/>
+    <ellipse cx="560" cy="175" rx="10" ry="13" fill="rgba(0,0,0,0.35)"/>
+    <!-- Reflection ground glow -->
+    <ellipse cx="450" cy="215" rx="300" ry="8" fill="rgba(201,151,26,0.08)"/>
+  </svg>
+</div>
+
+<!-- Lanterns -->
+<div id="lanterns"></div>
+
+<!-- Shooting stars -->
+<div id="shooting-wrap"></div>
+
+<!-- ══ INTRO ══ -->
+<div id="intro">
+  <div id="mandala-wrap">
+    <div class="mandala-ring mr1"></div>
+    <div class="mandala-ring mr2"></div>
+    <div class="mandala-ring mr3"></div>
+    <div class="mandala-ring mr4"></div>
+    <div id="intro-moon-big">🌙</div>
+  </div>
+
+  <div id="intro-title">عيدية نظر عيني</div>
+
+  <div id="intro-lines">
+    <span id="il1">$ eidiya_nazarAyni_v3.enc → decrypting...</span>
+    <span id="il2">✓ Encryption key [ 💛 LOVE × IRAQI_SOUL ] accepted</span>
+    <span id="il3">✓ Rendering: mosque • stars • moon • nebula... done</span>
+    <span id="il4">✓ Loading voice: Kazim Al-Sahir HD... done</span>
+    <span id="il5">✓ Weaving gold dust & lanterns... done</span>
+    <span id="il6">✓ All systems legendary — جاهز 🌙 <span class="intro-cursor"></span></span>
+  </div>
+
+  <div id="prog-wrap">
+    <div id="prog-label">INITIALIZING EIDIYA SYSTEM...</div>
+    <div id="prog-track">
+      <div id="prog-fill"></div>
+    </div>
+    <div class="prog-dot" id="pdot"></div>
+  </div>
+</div>
+
+<!-- ══ MAIN ══ -->
+<div id="main">
+  <div id="outer-frame">
+    <!-- Corner SVG ornaments -->
+    <div class="corner c-tl">
+      <svg viewBox="0 0 44 44" fill="none">
+        <path d="M42 2 L2 2 L2 42" stroke="rgba(201,151,26,0.6)" stroke-width="1.2" fill="none"/>
+        <path d="M42 2 L28 2" stroke="rgba(201,151,26,0.9)" stroke-width="1.5"/>
+        <path d="M2 28 L2 42" stroke="rgba(201,151,26,0.9)" stroke-width="1.5"/>
+        <circle cx="2" cy="2" r="2.5" fill="rgba(201,151,26,0.7)"/>
+        <path d="M14 2 Q2 2 2 14" stroke="rgba(201,151,26,0.3)" stroke-width="0.8" fill="none"/>
+        <circle cx="42" cy="2" r="1.5" fill="rgba(201,151,26,0.5)"/>
+        <circle cx="2" cy="42" r="1.5" fill="rgba(201,151,26,0.5)"/>
+        <path d="M20 2 L20 8 M26 2 L26 8" stroke="rgba(201,151,26,0.25)" stroke-width="0.7"/>
+        <path d="M2 20 L8 20 M2 26 L8 26" stroke="rgba(201,151,26,0.25)" stroke-width="0.7"/>
+      </svg>
+    </div>
+    <div class="corner c-tr">
+      <svg viewBox="0 0 44 44" fill="none">
+        <path d="M42 2 L2 2 L2 42" stroke="rgba(201,151,26,0.6)" stroke-width="1.2" fill="none"/>
+        <path d="M42 2 L28 2" stroke="rgba(201,151,26,0.9)" stroke-width="1.5"/>
+        <path d="M2 28 L2 42" stroke="rgba(201,151,26,0.9)" stroke-width="1.5"/>
+        <circle cx="2" cy="2" r="2.5" fill="rgba(201,151,26,0.7)"/>
+        <path d="M14 2 Q2 2 2 14" stroke="rgba(201,151,26,0.3)" stroke-width="0.8" fill="none"/>
+      </svg>
+    </div>
+    <div class="corner c-bl">
+      <svg viewBox="0 0 44 44" fill="none">
+        <path d="M42 2 L2 2 L2 42" stroke="rgba(201,151,26,0.6)" stroke-width="1.2" fill="none"/>
+        <path d="M42 2 L28 2" stroke="rgba(201,151,26,0.9)" stroke-width="1.5"/>
+        <path d="M2 28 L2 42" stroke="rgba(201,151,26,0.9)" stroke-width="1.5"/>
+        <circle cx="2" cy="2" r="2.5" fill="rgba(201,151,26,0.7)"/>
+      </svg>
+    </div>
+    <div class="corner c-br">
+      <svg viewBox="0 0 44 44" fill="none">
+        <path d="M42 2 L2 2 L2 42" stroke="rgba(201,151,26,0.6)" stroke-width="1.2" fill="none"/>
+        <path d="M42 2 L28 2" stroke="rgba(201,151,26,0.9)" stroke-width="1.5"/>
+        <path d="M2 28 L2 42" stroke="rgba(201,151,26,0.9)" stroke-width="1.5"/>
+        <circle cx="2" cy="2" r="2.5" fill="rgba(201,151,26,0.7)"/>
+      </svg>
+    </div>
+
+    <!-- THE CARD -->
+    <div id="card">
+      <div id="card-border"></div>
+      <div id="card-glow"></div>
+      <div id="card-shine"></div>
+
+      <!-- Bismillah -->
+      <div id="bismillah">
+        <div class="bism-line"></div>
+        <span>✦ بسم الله الرحمن الرحيم ✦</span>
+        <div class="bism-line"></div>
+      </div>
+
+      <!-- Crown -->
+      <div class="card-crown">
+        <span class="crown-star">✦</span>
+        <span class="crown-star">✧</span>
+        <span class="main-moon">🌙</span>
+        <span class="crown-star">✧</span>
+        <span class="crown-star">✦</span>
+      </div>
+
+      <div class="card-title">إلى نظر عيني..</div>
+
+      <div class="eid-badge">
+        <div class="badge-gem"></div>
+        <span class="badge-text">EID MUBARAK · ١٤٤٦</span>
+        <div class="badge-gem"></div>
+      </div>
+
+      <div class="ornate-div">
+        <div class="od-line"></div>
+        <span class="od-motif">❧ ✦ ❧</span>
+        <div class="od-line"></div>
+      </div>
+
+      <!-- Message -->
+      <div id="msg-box">
+        <span id="msg-txt"></span><span id="msg-cur"></span>
+      </div>
+
+      <!-- Seal -->
+      <div id="seal-wrap">
+        <div class="seal">
+          <div class="seal-top">عيد مبارك</div>
+          <div class="seal-icon">🌸</div>
+          <div class="seal-bot">١٤٤٦ هـ</div>
+        </div>
+      </div>
+
+      <div class="ornate-div" style="margin-top:0;">
+        <div class="od-line"></div>
+        <span class="od-motif">❧ ✦ ❧</span>
+        <div class="od-line"></div>
+      </div>
+
+      <!-- Play Button -->
+      <div class="btn-wrap">
+        <div class="btn-aura" id="btn-aura"></div>
+        <button id="play-btn" onclick="toggleAudio()">
+          <div class="btn-inner">
+            <span class="btn-ico" id="btn-ico">🎵</span>
+            <span id="vinyl-ico">💿</span>
+            <span id="btn-lbl">اسمعي العيدية</span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Waveform -->
+      <div id="waveform"></div>
+    </div><!-- /card -->
+  </div>
+</div>
+
+<!-- Footer -->
+<div id="footer-verse">
+  <div class="verse-text">كل عام وأنتِ الضوة اللي ينور أيامي..</div>
+  <div class="verse-sig">✦ صُمِّم بالحُبّ · EID 1446 · ✦</div>
+</div>
+
+<audio id="audio" src="https://files.catbox.moe/ak7zlo.mp3" preload="none"></audio>
+
+<script>
+/* ════════════════════════════════════
+   CONFIG
+════════════════════════════════════ */
+const MSG = "يا نظر عيني، وأغلى أعيادي.. جنت أفكر بشنو أعايدج، وگلت الكلمات العادية ما تلوگ لمقامج. ردت أسويلج شي بيدي، شي يشبهج.. فريد وماكو منه اثنين. صممتلج هذا المكان الصغير حتى أگولج كل عام وأنتِ بوسط گلبي، وكل عام وأنتِ الضوة اللي ينور أيامي. ما يهمني العيد ببيوت الناس، أني عيدي يبدأ من أشوف ضحكتج. يا رب كل أيامنا أعياد، وتبقين أنتِ السند والضحكة ونظر العين.. عيدج مبارك يا غالية";
+
+let playing = false;
+let particles = [];
+let pAnimId = null;
+
+/* ════════════════════════════════════
+   STARS — Enhanced with sizes & colors
+════════════════════════════════════ */
+(function(){
+  const cv = document.getElementById('stars-canvas');
+  const ct = cv.getContext('2d');
+  let W,H,stars=[];
+  const COLORS=['255,245,210','255,220,180','200,220,255','255,255,255','255,200,150'];
+  function resize(){
+    W=cv.width=innerWidth; H=cv.height=innerHeight;
+    stars=Array.from({length:140},()=>({
+      x:Math.random()*W, y:Math.random()*H*(0.85),
+      r:Math.random()*2+0.2,
+      a:Math.random(), da:(Math.random()-0.5)*0.007,
+      c:COLORS[Math.floor(Math.random()*COLORS.length)],
+      twinkle:Math.random()>0.4,
+      delay:Math.random()*6000
+    }));
+  }
+  window.addEventListener('resize',resize); resize();
+  (function draw(t=0){
+    ct.clearRect(0,0,W,H);
+    stars.forEach(s=>{
+      if(s.twinkle){s.a=Math.max(0.08,Math.min(1,s.a+s.da));if(s.a<=0.08||s.a>=1)s.da*=-1;}
+      // Glow for larger stars
+      if(s.r>1.2){
+        const g=ct.createRadialGradient(s.x,s.y,0,s.x,s.y,s.r*3);
+        g.addColorStop(0,`rgba(${s.c},${s.a})`);
+        g.addColorStop(1,`rgba(${s.c},0)`);
+        ct.beginPath(); ct.arc(s.x,s.y,s.r*3,0,Math.PI*2);
+        ct.fillStyle=g; ct.fill();
+      }
+      ct.beginPath(); ct.arc(s.x,s.y,s.r,0,Math.PI*2);
+      ct.fillStyle=`rgba(${s.c},${s.a})`; ct.fill();
+    });
+    requestAnimationFrame(draw);
+  })();
+})();
+
+/* ════════════════════════════════════
+   GOLD DUST
+════════════════════════════════════ */
+(function(){
+  const cv=document.getElementById('dust-canvas');
+  const ct=cv.getContext('2d');
+  let W,H,motes=[];
+  function resize(){
+    W=cv.width=innerWidth; H=cv.height=innerHeight;
+    motes=Array.from({length:60},()=>({
+      x:Math.random()*W, y:Math.random()*H,
+      r:Math.random()*1.5+0.3,
+      a:Math.random()*0.4,
+      vx:(Math.random()-0.5)*0.25,
+      vy:(Math.random()-0.5)*0.2-0.1,
+      da:(Math.random()-0.5)*0.008
+    }));
+  }
+  window.addEventListener('resize',resize); resize();
+  (function draw(){
+    ct.clearRect(0,0,W,H);
+    motes.forEach(m=>{
+      m.x+=m.vx; m.y+=m.vy;
+      if(m.x<0)m.x=W; if(m.x>W)m.x=0;
+      if(m.y<0)m.y=H; if(m.y>H)m.y=0;
+      m.a=Math.max(0.02,Math.min(0.5,m.a+m.da));
+      if(m.a<=0.02||m.a>=0.5)m.da*=-1;
+      ct.beginPath(); ct.arc(m.x,m.y,m.r,0,Math.PI*2);
+      ct.fillStyle=`rgba(201,151,26,${m.a})`; ct.fill();
+    });
+    requestAnimationFrame(draw);
+  })();
+})();
+
+/* ════════════════════════════════════
+   SHOOTING STARS
+════════════════════════════════════ */
+function shootStar(){
+  const el=document.createElement('div');
+  el.className='shoot';
+  const len=80+Math.random()*160;
+  el.style.width=len+'px';
+  el.style.top=(Math.random()*50)+'vh';
+  el.style.right=(-len)+'px';
+  el.style.animationDuration=(1.2+Math.random()*1.5)+'s';
+  document.getElementById('shooting-wrap').appendChild(el);
+  setTimeout(()=>el.remove(),3000);
+}
+shootStar();
+setInterval(()=>{if(Math.random()>0.55)shootStar();},4000);
+
+/* ════════════════════════════════════
+   LANTERNS
+════════════════════════════════════ */
+(function(){
+  const wrap=document.getElementById('lanterns');
+  const items=['🏮','🌸','✨','🌙','⭐','🌺','💛','🕌','🌟','🪔'];
+  function mk(){
+    const el=document.createElement('div');
+    el.className='lantern';
+    el.textContent=items[Math.floor(Math.random()*items.length)];
+    el.style.left=(Math.random()*92)+'vw';
+    el.style.fontSize=(16+Math.random()*16)+'px';
+    const dur=14+Math.random()*14;
+    el.style.animationDuration=dur+'s';
+    el.style.animationDelay=(-Math.random()*dur)+'s';
+    wrap.appendChild(el);
+    setTimeout(()=>el.remove(),(dur+3)*1000);
+  }
+  for(let i=0;i<12;i++)mk();
+  setInterval(mk,2200);
+})();
+
+/* ════════════════════════════════════
+   PARALLAX BG + MOON
+════════════════════════════════════ */
+let bx=0,by=0,tbx=0,tby=0;
+let mx2=0,my2=0;
+function setP(nx,ny){tbx=(nx-.5)*-28;tby=(ny-.5)*-20;}
+document.addEventListener('mousemove',e=>{mx2=e.clientX;my2=e.clientY;setP(e.clientX/innerWidth,e.clientY/innerHeight);});
+document.addEventListener('touchmove',e=>{mx2=e.touches[0].clientX;my2=e.touches[0].clientY;setP(e.touches[0].clientX/innerWidth,e.touches[0].clientY/innerHeight);},{passive:true});
+const bgEl=document.getElementById('master-bg');
+const moonEl=document.getElementById('big-moon');
+(function loopBg(){
+  bx+=(tbx-bx)*0.035; by+=(tby-by)*0.035;
+  bgEl.style.transform=`translate3d(${bx*.6}px,${by*.6}px,0)`;
+  moonEl.style.transform=`translateX(calc(-50% + ${bx*.2}px)) translateY(${by*.15}px)`;
+  requestAnimationFrame(loopBg);
+})();
+
+/* ════════════════════════════════════
+   CARD TILT + DYNAMIC SHINE
+════════════════════════════════════ */
+const card=document.getElementById('card');
+const shine=document.getElementById('card-shine');
+let crx=0,cry=0,tcrx=0,tcry=0;
+function setT(nx,ny){tcry=(nx-.5)*22;tcrx=(ny-.5)*-16;}
+document.addEventListener('mousemove',e=>{
+  setT(e.clientX/innerWidth,e.clientY/innerHeight);
+  const r=card.getBoundingClientRect();
+  const px=((e.clientX-r.left)/r.width)*100;
+  const py=((e.clientY-r.top)/r.height)*100;
+  shine.style.background=`radial-gradient(circle at ${px}% ${py}%, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.04) 30%, transparent 60%)`;
+});
+document.addEventListener('touchmove',e=>{setT(e.touches[0].clientX/innerWidth,e.touches[0].clientY/innerHeight);},{passive:true});
+document.addEventListener('touchend',()=>{tcrx=0;tcry=0;});
+(function loopCard(){
+  crx+=(tcrx-crx)*0.065; cry+=(tcry-cry)*0.065;
+  card.style.transform=`perspective(1400px) rotateX(${crx}deg) rotateY(${cry}deg) translate3d(0,0,0)`;
+  requestAnimationFrame(loopCard);
+})();
+
+/* ════════════════════════════════════
+   PARTICLES — Premium Physics
+════════════════════════════════════ */
+const pCv=document.getElementById('p-canvas');
+const pCt=pCv.getContext('2d');
+function resP(){pCv.width=innerWidth;pCv.height=innerHeight;}
+window.addEventListener('resize',resP);resP();
+const EMOJIS=['✨','💛','❤️','🌸','🌙','⭐','💖','🌺','🎶','🏮','🌟','🪔','💫','✦'];
+
+function burst(x,y,n=20){
+  for(let i=0;i<n;i++){
+    const ang=Math.random()*Math.PI*2;
+    const spd=2+Math.random()*8;
+    particles.push({
+      x,y,
+      vx:Math.cos(ang)*spd, vy:Math.sin(ang)*spd-3.5,
+      life:1, decay:0.01+Math.random()*0.014,
+      emoji:EMOJIS[Math.floor(Math.random()*EMOJIS.length)],
+      size:14+Math.random()*18,
+      g:0.08+Math.random()*0.1,
+      rot:Math.random()*Math.PI*2,
+      rv:(Math.random()-.5)*0.12,
+      scale:1
+    });
+  }
+  if(!pAnimId)animP();
+}
+
+function animP(){
+  pCt.clearRect(0,0,pCv.width,pCv.height);
+  for(let i=particles.length-1;i>=0;i--){
+    const p=particles[i];
+    p.x+=p.vx; p.y+=p.vy; p.vy+=p.g;
+    p.vx*=0.985; p.life-=p.decay; p.rot+=p.rv;
+    if(p.life<=0){particles.splice(i,1);continue;}
+    pCt.save();
+    pCt.globalAlpha=p.life*p.life;
+    pCt.font=`${p.size*Math.min(1,p.life*3)}px serif`;
+    pCt.translate(p.x,p.y); pCt.rotate(p.rot);
+    pCt.fillText(p.emoji,-p.size/2,p.size/2);
+    pCt.restore();
+  }
+  pCt.globalAlpha=1;
+  pAnimId=particles.length?requestAnimationFrame(animP):null;
+}
+
+// Tap anywhere
+document.addEventListener('click',e=>{if(!e.target.closest('button'))burst(e.clientX,e.clientY,12);});
+document.addEventListener('touchstart',e=>{if(!e.target.closest('button'))burst(e.touches[0].clientX,e.touches[0].clientY,12);},{passive:true});
+
+/* ════════════════════════════════════
+   WAVEFORM
+════════════════════════════════════ */
+const wfEl=document.getElementById('waveform');
+for(let i=0;i<26;i++){
+  const b=document.createElement('div');b.className='wbar';
+  b.style.animationDelay=`${i*0.05}s`;b.style.height=`${4+Math.random()*10}px`;
+  wfEl.appendChild(b);
+}
+
+/* ════════════════════════════════════
+   AUDIO
+════════════════════════════════════ */
+const audio=document.getElementById('audio');
+const btnIco=document.getElementById('btn-ico');
+const vinylIco=document.getElementById('vinyl-ico');
+const btnLbl=document.getElementById('btn-lbl');
+const btnAura=document.getElementById('btn-aura');
+const playBtn=document.getElementById('play-btn');
+
+function toggleAudio(){
+  const r=playBtn.getBoundingClientRect();
+  burst(r.left+r.width/2, r.top+r.height/2, 32);
+
+  if(!playing){
+    audio.play().catch(()=>{});
+    playing=true;
+    btnIco.style.display='none';
+    vinylIco.style.display='inline';
+    btnLbl.textContent='تعزف الآن.. 💛';
+    btnAura.classList.add('active');
+    gsap.to(wfEl,{opacity:1,duration:0.7});
+    wfEl.querySelectorAll('.wbar').forEach(b=>b.classList.add('play'));
+    gsap.to(card,{boxShadow:'0 0 120px rgba(201,151,26,0.35), 0 40px 100px rgba(0,0,0,0.75), inset 0 2px 0 rgba(255,255,255,0.13)',duration:1.5,ease:'power2.out'});
+    // Extra burst of lanterns
+    for(let i=0;i<5;i++)setTimeout(()=>burst(Math.random()*innerWidth,Math.random()*innerHeight*.7,8),i*400);
+  } else {
+    audio.pause();
+    playing=false;
+    btnIco.style.display='inline';
+    vinylIco.style.display='none';
+    btnLbl.textContent='اسمعي العيدية';
+    btnAura.classList.remove('active');
+    gsap.to(wfEl,{opacity:0,duration:0.5});
+    wfEl.querySelectorAll('.wbar').forEach(b=>b.classList.remove('play'));
+    gsap.to(card,{boxShadow:'0 0 0 1px rgba(201,151,26,0.07), 0 40px 100px rgba(0,0,0,0.75)',duration:0.8});
+  }
+}
+
+/* ════════════════════════════════════
+   TYPING — Smooth Iraqi rhythm
+════════════════════════════════════ */
+function typeMsg(done){
+  const el=document.getElementById('msg-txt');
+  const cur=document.getElementById('msg-cur');
+  cur.style.opacity='1';
+  let i=0;
+  function step(){
+    if(i<MSG.length){
+      el.textContent+=MSG[i++];
+      const ch=MSG[i]||'';
+      const d=/[،.؟!…]/.test(ch)?120:/[\s]/.test(ch)?65:38;
+      setTimeout(step,d);
+    } else {
+      setTimeout(()=>{
+        cur.style.opacity='0';
+        document.getElementById('seal-wrap').classList.add('pop');
+        setTimeout(()=>{
+          document.getElementById('footer-verse').classList.add('show');
+          if(done)done();
+        },900);
+      },700);
+    }
+  }
+  step();
+}
+
+/* ════════════════════════════════════
+   INTRO SEQUENCE
+════════════════════════════════════ */
+function runIntro(){
+  // Animate intro elements
+  gsap.to('#intro-moon-big',{opacity:1,scale:1,duration:0.9,delay:0.4,ease:'back.out(1.8)',from:{opacity:0,scale:0.5}});
+  gsap.to('#intro-title',{opacity:1,y:0,duration:0.8,delay:1.2,ease:'power3.out',from:{opacity:0,y:20}});
+
+  const lines=['il1','il2','il3','il4','il5','il6'];
+  const delays=[1.8,2.5,3.1,3.7,4.2,4.75];
+  lines.forEach((id,i)=>gsap.to(`#${id}`,{opacity:1,x:0,duration:0.45,delay:delays[i],ease:'power2.out'}));
+
+  // Progress bar
+  const fill=document.getElementById('prog-fill');
+  const dot=document.getElementById('pdot');
+  const track=document.getElementById('prog-track');
+  const trackW=()=>track.getBoundingClientRect().width;
+  let pct=0,running=true;
+  (function tickP(){
+    if(!running)return;
+    pct=Math.min(100,pct+(pct<70?1.1:pct<92?0.55:0.25));
+    fill.style.width=pct+'%';
+    const tw=trackW();
+    dot.style.left=(tw*(pct/100)-3.5)+'px';
+    document.getElementById('prog-label').textContent=`INITIALIZING... ${Math.floor(pct)}%`;
+    if(pct<100)requestAnimationFrame(tickP);
+  })();
+
+  // Transition to main
+  gsap.to('#intro',{opacity:0,duration:1.1,delay:5.9,ease:'power2.inOut',
+    onStart:()=>{running=false;fill.style.width='100%';dot.style.left=(trackW()-3.5)+'px';},
+    onComplete:()=>{
+      document.getElementById('intro').style.display='none';
+      showMain();
+    }
+  });
+}
+
+/* ════════════════════════════════════
+   SHOW MAIN SCENE
+════════════════════════════════════ */
+function showMain(){
+  const main=document.getElementById('main');
+  main.style.display='flex';
+  // Push card down so moon doesn't overlap
+  const moonH = document.getElementById('big-moon').offsetHeight || 90;
+  main.style.paddingTop = (moonH + 16) + 'px';
+
+  // Reveal scene elements
+  gsap.to('#big-moon',{opacity:1,duration:1.5,ease:'power2.out'});
+  gsap.to('#mosque-wrap',{opacity:1,duration:2,delay:0.3,ease:'power2.out'});
+  gsap.to('#bismillah',{opacity:1,duration:1,delay:0.8,ease:'power2.out'});
+
+  // Corner ornaments
+  gsap.to('.corner',{opacity:1,duration:0.8,stagger:0.12,delay:0.5,ease:'back.out(1.5)'});
+
+  // Card entrance — LEGENDARY
+  gsap.fromTo(card,
+    {opacity:0,y:80,scale:0.78,rotateX:15},
+    {opacity:1,y:0,scale:1,rotateX:0,duration:1.4,delay:0.2,ease:'back.out(1.4)',
+      onComplete:()=>{
+        // Stagger card children
+        gsap.from('#card > *:not(#card-border):not(#card-glow):not(#card-shine)',
+          {opacity:0,y:14,stagger:0.1,duration:0.6,delay:0.1,ease:'power2.out'});
+        setTimeout(()=>typeMsg(),600);
+      }
+    }
+  );
+
+  // Flash burst on card appear
+  setTimeout(()=>{
+    const r=card.getBoundingClientRect();
+    burst(r.left+r.width/2, r.top+r.height/2, 25);
+  }, 500);
+}
+
+/* ════════════════════════════════════
+   BOOT
+════════════════════════════════════ */
+window.addEventListener('DOMContentLoaded', runIntro);
+</script>
+</body>
+</html>
